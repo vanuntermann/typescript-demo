@@ -19,6 +19,8 @@
     - Límites:
         + Efectos
         + Higher ranks (ejemplo de ramda? lodash?)
+* Functions
+	- Arrow Function (igual que ES6, pero aclarar la diferencia con function)
 * Módulos y namespaces
     - Basados en ES6 (post)
 * OO (overview de OO en general. por ej. classical OO, self's prototypal OO, etc. Smalltalk no. [Cook](http://wcook.blogspot.com.ar/2012/07/proposal-for-simplified-modern.html)): 
