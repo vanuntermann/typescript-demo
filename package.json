@@ -1,0 +1,23 @@
+{
+  "name": "typescript-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc --out build/out.js src/**/*.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vanuntermann/typescript-demo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vanuntermann/typescript-demo/issues"
+  },
+  "homepage": "https://github.com/vanuntermann/typescript-demo#readme",
+  "devDependencies": {
+    "typescript": "^1.8.10"
+  }
+}
