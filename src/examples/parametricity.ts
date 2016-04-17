@@ -9,4 +9,4 @@ function id<A>(a : A): A {
 function setContent<content, newC>(f: (c: content) => newC, x: Html<content>) : Html<newC> {
 	return { content: f(x.content)}
 }
-alert(setContent((x) => x+1, {content: 42}).content)
+console.log(setContent((x) => x+1, {content: 42}).content)
