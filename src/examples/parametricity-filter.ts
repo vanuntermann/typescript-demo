@@ -34,13 +34,15 @@ type CombinatorOp = "all" | "any";
 var any : CombinatorOp = 'any'; // Necessary due to poor type inference...
 var all : CombinatorOp = 'all'; // Necessary due to poor type inference...
 
-var a : Filter<CombinatorOp, Op, string, string> = ['==', 'country', 'US']
-var b : Filter<CombinatorOp, Op, string, string> = ['==', 'country', 'Argentina']
-var c : Filter<CombinatorOp, Op, string, string> = ['!=', 'country', 'Iran']
+type MyFilter = Filter<CombinatorOp, Op, string, string>
 
-var r1 : Filter<CombinatorOp, Op, string, string> = combine_(any, a, b);
-var r2 : Filter<CombinatorOp, Op, string, string> = combine_(all, r1, c);
-var r3 : Filter<CombinatorOp, Op, string, string> = setValue('Germany', r2);
+var a : MyFilter = ['==', 'country', 'US']
+var b : MyFilter = ['==', 'country', 'Argentina']
+var c : MyFilter = ['*=', 'country', 'Iran']
+
+var r1 : MyFilter = combine_(any, a, b);
+var r2 : MyFilter = combine_(all, r1, c);
+var r3 : MyFilter = setValue('Germany', r2);
 
 // Unfortunate type-checks:
 var bad1 : Op = r2[0]
