@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc --out build/out.js src/**/*.ts",
-    "run": "npm run build && node build/out.js",
+    "build": "tsc --module commonjs --outDir build src/main.ts",
+    "run": "npm run build && node build/main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
