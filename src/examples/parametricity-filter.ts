@@ -11,7 +11,18 @@ function combine<c, op, k, v>(c: c, a: Filter<c, op, k, v>, b: Filter<c, op, k, 
 // Stronger
 // Exploits fact that `{ combinator: c, filters: [typeof a, typeof b]}` structurally type-checks as a Filter<c, op, k, v>
 function combine_< c, o, k, v1, v2>(c: c, a: Filter<c, o, k, v1>, b: Filter<c, o, k, v2>): { combinator: c, filters: [typeof a, typeof b]} {
-  return { combinator: c, filters: [a, b] } // Any of these are type errors: [], [a], [b, a], [b]
+  return { combinator: c, filters: [a, b] } // These would be type errors: [], [a], [b, a], [b]
+}
+
+function setValue<c, o, k, v1, v2>(v2: v2, a: Filter<c, o, k, v1>): Filter<c, o, k, v2> {
+  if (a instanceof Array) {
+    return [a[0], a[1], v2];
+  } else {
+    return { 
+      combinator: a.combinator, 
+      filters: a.filters.map(x => setValue(v2, x)) // Not mapping would be a type error
+    };
+  }
 }
 
 // User
@@ -20,16 +31,18 @@ type ComparisonOp = "==" | "!=";
 type MembershipOp = "in" | "!in";
 type Op = ComparisonOp | MembershipOp;
 type CombinatorOp = "all" | "any";
+var any : CombinatorOp = 'any'; // Necessary due to poor type inference...
+var all : CombinatorOp = 'all'; // Necessary due to poor type inference...
 
 var a : Filter<CombinatorOp, Op, string, string> = ['==', 'country', 'US']
 var b : Filter<CombinatorOp, Op, string, string> = ['==', 'country', 'Argentina']
 var c : Filter<CombinatorOp, Op, string, string> = ['!=', 'country', 'Iran']
-var any : CombinatorOp = 'any'; // Necessary due to poor type inference...
 
 var r1 : Filter<CombinatorOp, Op, string, string> = combine_(any, a, b);
-var all : CombinatorOp = 'all'; // Necessary due to poor type inference...
 var r2 : Filter<CombinatorOp, Op, string, string> = combine_(all, r1, c);
+var r3 : Filter<CombinatorOp, Op, string, string> = setValue('Germany', r2);
 
-var r3 : Op = r2[0]; // Type-checks. Ugh.
+// Unfortunate type-checks:
+var bad1 : Op = r2[0]
 
-console.log(JSON.stringify(r2));
+console.log(JSON.stringify(r3));
