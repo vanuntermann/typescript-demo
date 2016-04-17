@@ -38,7 +38,7 @@ type MyFilter = Filter<CombinatorOp, Op, string, string>
 
 var a : MyFilter = ['==', 'country', 'US']
 var b : MyFilter = ['==', 'country', 'Argentina']
-var c : MyFilter = ['*=', 'country', 'Iran']
+var c : MyFilter = ['!=', 'country', 'Iran']
 
 var r1 : MyFilter = combine_(any, a, b);
 var r2 : MyFilter = combine_(all, r1, c);
