@@ -9,7 +9,6 @@
     - "Rapid prototyping": El primer día vs. Durante el proyecto
 * El type system:
     - Nominalidad, Estructuralidad, y Duck-typing
-    - Construcción segura (ejemplo con Validación de algo)
     - Tipos recursivos
     - Tuplas
     - Uniones e intersecciones
@@ -22,6 +21,9 @@
         + Inferencia: funciona bien con código trivial (por ej. código que no usa generics ni unions)
         + Efectos
         + Higher ranks (ejemplo de ramda? lodash?)
+    - Construcción segura (ejemplo con Validación de algo):
+        + Con excepciones (a.k.a Just Fail)
+        + Sin excepciones (explotando el type system)
 * Functions
 	- Arrow Function (igual que ES6, pero aclarar la diferencia con function)
 * Módulos y namespaces
