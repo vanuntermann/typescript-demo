@@ -17,7 +17,7 @@
     - Generics:
         + Parametricidad light
         + Pro/Cons de subtyping
-    - Queries
+        + Queries (`<a,a>` vs. `<a,typeof a>`)
     - Límites:
         + Inferencia: funciona bien con código trivial (por ej. código que no usa generics ni unions)
         + Efectos
