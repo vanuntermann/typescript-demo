@@ -6,6 +6,7 @@
         + Infinitos problemas vs. Menos infinitos problemas
     - Lenguajes "dinámicos" son lenguajes estáticos (desactivar type checking a gusto)
     - Pros/Cons de escribir en JavaScript vs. compilar a JavaScript
+    - "Rapid prototyping": El primer día vs. Durante el proyecto
 * El type system:
     - Nominalidad, Estructuralidad, y Duck-typing
     - Construcción segura (ejemplo con Validación de algo)
