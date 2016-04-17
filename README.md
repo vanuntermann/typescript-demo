@@ -10,14 +10,16 @@
 * El type system:
     - Nominalidad, Estructuralidad, y Duck-typing
     - Construcción segura (ejemplo con Validación de algo)
-    - Tipos recursivos ???
+    - Tipos recursivos
     - Tuplas
     - Uniones e intersecciones
     - Assertions
     - Generics:
         + Parametricidad light
-    - Queries (meta programming???. explore)
+        + Pro/Cons de subtyping
+    - Queries
     - Límites:
+        + Inferencia: funciona bien con código trivial (por ej. código que no usa generics ni unions)
         + Efectos
         + Higher ranks (ejemplo de ramda? lodash?)
 * Functions
