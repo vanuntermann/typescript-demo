@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc --out build/out.js src/**/*.ts",
-    "run": "npm build && node build/out.js",
+    "run": "npm run build && node build/out.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
