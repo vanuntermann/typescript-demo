@@ -45,8 +45,7 @@ module Parametricity {
   var r2 : MyFilter = combine_(all, r1, c);
   var r3 : MyFilter = setValue('Germany', r2);
 
-  // Unfortunate type-checks:
-  var bad1 : Op = r2[0]
+  // var bad1 : Op = r2[0] // Type error (with --noImplicitAny)
 
   export var r4 = JSON.stringify(r3);
 }
