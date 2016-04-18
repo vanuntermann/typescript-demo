@@ -34,6 +34,7 @@
     - Subclassing / Subtyping
 * Práctica
     - 3rd party libs. TSD / Typings
-    - El compilador. Opciones.
+    - El compilador. Opciones:
+        + `--noImplicitAny`
     - Ejemplo configuración webpack
     - Ejemplo debugging, y source maps
