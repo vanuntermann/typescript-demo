@@ -17,7 +17,7 @@ module Parametricity {
 
   function setValue<c, o, k, v1, v2>(v2: v2, a: Filter<c, o, k, v1>): Filter<c, o, k, v2> {
     if (a instanceof Array) {
-      return [a[0], a[1], v2];
+      return [a[0], a[1], v2]; // Leaving the original `a[2]` would be a type error
     } else {
       return { 
         combinator: a.combinator, 
