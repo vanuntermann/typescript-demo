@@ -30,9 +30,9 @@ module Parametricity {
 
   function show<c, o, k, v>(showC: Show<c>, showO: Show<o>, showK: Show<k>, showV: Show<v>, a: Filter<c,o,k,v>) : string {
     if (a instanceof Array) {
-      return showK(a[1]) + showO(a[0]) + showV(a[2]);
+      return showK(a[1]) + showO(a[0]) + "'" + showV(a[2]) + "'";
     } else {
-      return showC(a.combinator) + '(' + a.filters.map(x => show(showC, showO, showK, showV, x)).join(',') + ')';
+      return '(' + a.filters.map(x => show(showC, showO, showK, showV, x)).join(' ' + showC(a.combinator) + ' ') + ')';
     }
   }
 
@@ -72,7 +72,8 @@ module Parametricity {
   export var log = JSON.stringify(r3);
 
   function id<a>(a: a) { return a } // id for all because we happen to be already using strings for everything
-  export var pretty = show(id, id, id, id, r3);
+  function showCombinator(a: CombinatorOp) { return a === 'any' ? 'OR' : 'AND' }
+  export var pretty = show(showCombinator, id, id, id, r3);
   export var encoded = JSON.stringify(encode(r3));
 }
 
