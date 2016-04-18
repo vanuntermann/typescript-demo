@@ -2,6 +2,9 @@ import * as PB from './examples/parametricity';
 import * as PF from './examples/parametricity-filter';
 import * as SC from './examples/safe-construction-type-driven-style';
 
-console.log(PB.r0);
-console.log(PF.r4);
-console.log(SC.User.r0);
+[
+  PB.r0,
+  PF.r4,
+  PF.r5,
+  SC.User.r0
+].forEach(r => console.log(r));

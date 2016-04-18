@@ -26,6 +26,16 @@ module Parametricity {
     }
   }
 
+  type Show<a> = (a: a) => string;
+
+  function show<c, o, k, v>(showC: Show<c>, showO: Show<o>, showK: Show<k>, showV: Show<v>, a: Filter<c,o,k,v>) : string {
+    if (a instanceof Array) {
+      return showK(a[1]) + showO(a[0]) + showV(a[2]);
+    } else {
+      return showC(a.combinator) + '(' + a.filters.map(x => show(showC, showO, showK, showV, x)).join(',') + ')';
+    }
+  }
+
   // User
 
   type ComparisonOp = "==" | "!=";
@@ -48,6 +58,9 @@ module Parametricity {
   // var bad1 : Op = r2[0] // Type error (with --noImplicitAny)
 
   export var r4 = JSON.stringify(r3);
+
+  function id<a>(a: a) { return a } // id for all because we happen to be already using strings for everything
+  export var r5 = show(id, id, id, id, r3);
 }
 
 export = Parametricity;
