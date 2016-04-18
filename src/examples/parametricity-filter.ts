@@ -36,6 +36,17 @@ module Parametricity {
     }
   }
 
+  // Too hard to type-check?...
+  type Encoded = any;
+
+  function encode<c, o, k, v>(a: Filter<c,o,k,v>) : Encoded {
+    if (a instanceof Array) {
+      return a;
+    } else {
+      return [ a.combinator ].concat(a.filters.map(x => encode(x)));
+    }
+  }
+
   // User
 
   type ComparisonOp = "==" | "!=";
@@ -47,20 +58,22 @@ module Parametricity {
 
   type MyFilter = Filter<CombinatorOp, Op, string, string>
 
-  var a : MyFilter = ['==', 'country', 'US']
-  var b : MyFilter = ['==', 'country', 'Argentina']
-  var c : MyFilter = ['!=', 'country', 'Iran']
+  var a : MyFilter = ['==', 'geoid', '16000US5582200']
+  var b : MyFilter = ['==', 'name', 'Valders, WI']
+  var c : MyFilter = ['==', 'name', 'Randolph, WI']
+  var d : MyFilter = ['==', 'name', 'Collins, WI']
 
-  var r1 : MyFilter = combine_(any, a, b);
-  var r2 : MyFilter = combine_(all, r1, c);
-  var r3 : MyFilter = setValue('Germany', r2);
+  var r1 : MyFilter = combine_(all, a, b);
+  var r2 : MyFilter = combine_(any, combine_(any, r1, d), c);
+  var r3 : MyFilter = r2; //setValue('Germany', r2);
 
   // var bad1 : Op = r2[0] // Type error (with --noImplicitAny)
 
-  export var r4 = JSON.stringify(r3);
+  export var log = JSON.stringify(r3);
 
   function id<a>(a: a) { return a } // id for all because we happen to be already using strings for everything
-  export var r5 = show(id, id, id, id, r3);
+  export var pretty = show(id, id, id, id, r3);
+  export var encoded = JSON.stringify(encode(r3));
 }
 
 export = Parametricity;

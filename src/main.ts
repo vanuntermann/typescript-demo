@@ -4,7 +4,8 @@ import * as SC from './examples/safe-construction-type-driven-style';
 
 [
   PB.r0,
-  PF.r4,
-  PF.r5,
+  PF.log,
+  PF.pretty,
+  PF.encoded,
   SC.User.r0
-].forEach(r => console.log(r));
+].forEach(r => console.log(r + "\n"));
