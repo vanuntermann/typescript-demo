@@ -4,24 +4,19 @@
     - Cada vez más cosas importantes implementadas en JavaScript
         + Hola, mi nombre es "[object Object]" y mi edad es "NaN"
         + Infinitos problemas vs. Menos infinitos problemas
-    - Lenguajes "dinámicos" son lenguajes estáticos (desactivar type checking a gusto)
+    - Desactivar type checking a gusto
     - Pros/Cons de escribir en JavaScript vs. compilar a JavaScript
     - "Rapid prototyping": El primer día vs. Durante el proyecto
+	- 3rd party libs. TSD / Typings	
 * El type system:
-    - Nominalidad, Estructuralidad, y Duck-typing
-    - Tipos recursivos
+	- Aliases
     - Tuplas
-    - Uniones e intersecciones
-    - Assertions
+    - Uniones e intersecciones  
     - Generics:
         + Parametricidad light
         + Pro/Cons de subtyping
-        + Queries (`<a,a>` vs. `<a,typeof a>`)
-    - Límites:
-        + Inferencia: funciona bien con código trivial (por ej. código que no usa generics ni unions)
-        + Efectos
-        + Higher ranks (ejemplo de ramda? lodash?)
     - Construcción segura (ejemplo con Validación de algo):
+		+ Class vs interface vs alias
         + Con excepciones (a.k.a Just Fail)
         + Sin excepciones (explotando el type system)
 * Functions
@@ -33,8 +28,15 @@
     - Decorators
     - Subclassing / Subtyping
 * Práctica
-    - 3rd party libs. TSD / Typings
     - El compilador. Opciones:
         + `--noImplicitAny`
     - Ejemplo configuración webpack
     - Ejemplo debugging, y source maps
+
+* Comentarios:
+    - Límites del type system:
+        + Inferencia: funciona bien con código trivial (por ej. código que no usa generics ni unions)
+        + Efectos
+        + Higher ranks (ejemplo de ramda? lodash?)
+
+	
